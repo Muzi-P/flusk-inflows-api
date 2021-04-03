@@ -1,12 +1,16 @@
 from flask import Flask, request, jsonify
 from flask_restful import Api, Resource, reqparse, abort, fields, marshal_with
+from flask_cors import CORS, cross_origin
 from scipy import interpolate
 import numpy as np
 import pandas as pd
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 api = Api(app)
 
 class ModelInterpolate (Resource):
+  	@cross_origin()
   	def post(self):
   			request_data = request.get_json()
   			test = self.handle_request_data(request_data)
