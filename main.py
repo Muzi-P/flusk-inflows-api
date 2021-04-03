@@ -25,9 +25,9 @@ class ModelInterpolate (Resource):
   			j = 0 
   			while i < 42736:
   					date[j] = i
-  					min[j] = (self.interpolate(x_points, y_min_points,i)).item()
-  					opt[j] = (self.interpolate(x_points, y_opt_points,i)).item()
-  					max[j] = (self.interpolate(x_points, y_max_points,i)).item()
+  					min[j] = float("{:.2f}".format((self.interpolate(x_points, y_min_points,i)).item()))
+  					opt[j] = float("{:.2f}".format((self.interpolate(x_points, y_opt_points,i)).item()))
+  					max[j] = float("{:.2f}".format((self.interpolate(x_points, y_max_points,i)).item()))
   					i += 1
   					j += 1
   			return {"min": min.tolist(), "opt": opt.tolist(), "max": max.tolist()}
